@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// intro
 public class arraylistdev1 {
     public static void main(String[] args) {
     Scanner input = new Scanner(System.in);

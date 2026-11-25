@@ -15,11 +15,13 @@ public class dailyPractice1125 {
         //System.out.println(findAvg(num));
         //System.out.println(subFromAll(num, 3.4));
         Stats s = new Stats(num);
-        System.out.println(s.findPeak(3)); 
+        System.out.println(s.findPeak(3));
+        System.out.println(s.findPercentage(2)); 
         input.close();
+
+       
     }
 }
-
 
 class Stats{
     private ArrayList<Integer> num;
@@ -35,7 +37,7 @@ class Stats{
         return total / num.size();
     }
 
-    public ArrayList<Double> subToAll(double x){
+    public ArrayList<Double> subFromAll(double x){
         ArrayList<Double> y = new ArrayList<>();
         for (int i : num){
            y.add(i - x);
@@ -54,6 +56,10 @@ class Stats{
     public int findPeak(){
         return maximum(num);
     }
+    public int findTotal(){
+        return addAll(num);
+    }
+
     public static int maximum(ArrayList<Integer> x){
         int max = x.get(0);
         for (int i : x){
@@ -62,6 +68,13 @@ class Stats{
             }
         }
         return max;
+    }
+    public static int addAll(ArrayList<Integer> x){
+        int total = 0;
+        for (int i : x){
+            total += i;
+        }
+        return total;
     }
     
     public ArrayList<Integer> findPeak(int step){
@@ -78,5 +91,12 @@ class Stats{
             z.add(maximum(y));
         }     
         return z;    
+    }
+    public double findPercentage(int target){
+        int count = 0;
+        for (int i : num){
+            if (i == target) count++; 
+        }
+      return 100.0 * count/num.size();
     }
 }
