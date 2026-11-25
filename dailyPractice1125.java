@@ -14,56 +14,68 @@ public class dailyPractice1125 {
         }
         //System.out.println(findAvg(num));
         //System.out.println(subFromAll(num, 3.4));
-        System.out.println(findPeak(num, 4));
+        Stats s = new Stats(num);
+        System.out.println(s.findPeak(3)); 
         input.close();
     }
+}
 
-    public static double findAvg(ArrayList<Integer> x){
+
+class Stats{
+    private ArrayList<Integer> num;
+
+    public Stats(ArrayList<Integer> x){
+        this.num = new ArrayList<>(x);
+    }
+    public  double findAvg(){
         double total = 0;
-        for (int i : x){
+        for (int i : num){
             total += i;
         }
-        return total / x.size();
+        return total / num.size();
     }
 
-    public static ArrayList<Double> subToAll(ArrayList<Integer> x, double num){
+    public ArrayList<Double> subToAll(double x){
         ArrayList<Double> y = new ArrayList<>();
-        for (int i : x){
-           y.add(i - num);
+        for (int i : num){
+           y.add(i - x);
         }
         return y;
     }
     
-    public static ArrayList<Double> addToAll(ArrayList<Integer> x, double num){
+    public ArrayList<Double> addToAll(double x){
         ArrayList<Double> y = new ArrayList<>();
-        for (int i : x){
-           y.add(i + num);
+        for (int i : num){
+           y.add(i + x);
         }
         return y;
     }
 
-    public static int findPeak(ArrayList<Integer> x){
-        int y = x.get(0);
-        for (int c : x){
-             if (c > y){
-                y = c;
-             }
+    public int findPeak(){
+        return maximum(num);
+    }
+    public static int maximum(ArrayList<Integer> x){
+        int max = x.get(0);
+        for (int i : x){
+            if (max < i){
+                max = i;
+            }
         }
-        return y; 
+        return max;
     }
     
-    public static ArrayList<Integer> findPeak(ArrayList<Integer> x, int step){
+    public ArrayList<Integer> findPeak(int step){
         ArrayList<Integer> y = new ArrayList<>();
         ArrayList<Integer> z = new ArrayList<>();
-        for (int i : x){
+        for (int i : num){
             y.add(i);
             if (y.size() == step){
-                z.add(findPeak(y));
+                z.add(maximum(y));
                 y.clear();
             }
         }
         if (!y.isEmpty()){
-            z.add(findPeak(y));
+            z.add(maximum(y));
         }     
         return z;    
     }
