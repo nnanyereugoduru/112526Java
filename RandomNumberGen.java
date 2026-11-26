@@ -4,8 +4,7 @@ import java.util.Scanner;
 public class RandomNumberGen {
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
-        Guesser user = new Guesser();
-        boolean a;
+        Guesser user = new Guesser(); 
        
         do {
             System.out.print("Enter random number: =>");
